@@ -1,0 +1,127 @@
+import express from 'express';
+import mysql from 'mysql2/promise';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Database connection
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'kontraktor_db',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+// Test database connection
+async function testConnection() {
+  try {
+    const connection = await pool.getConnection();
+    console.log('Database connection successful');
+    connection.release();
+  } catch (error) {
+    console.error('Database connection failed:', error);
+    process.exit(1);
+  }
+}
+
+testConnection();
+
+// API Routes
+// Get all customers with point geometry
+app.get('/api/customers', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT 
+        id, 
+        kodepelanggan, 
+        nama, 
+        alamat, 
+        ST_AsGeoJSON(geom) as geom_json 
+      FROM customer
+    `);
+    
+    // Transform the data to include GeoJSON
+    const customers = rows.map(row => ({
+      id: row.id,
+      kodepelanggan: row.kodepelanggan,
+      nama: row.nama,
+      alamat: row.alamat,
+      geom: JSON.parse(row.geom_json)
+    }));
+    
+    res.json(customers);
+  } catch (error) {
+    console.error('Error fetching customers:', error);
+    res.status(500).json({ error: 'Failed to fetch customers' });
+  }
+});
+
+// Get all pipes with linestring geometry
+app.get('/api/pipes', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT 
+        id, 
+        jenis, 
+        diameter, 
+        kedalaman, 
+        ST_AsGeoJSON(geom) as geom_json 
+      FROM pipa
+    `);
+    
+    // Transform the data to include GeoJSON
+    const pipes = rows.map(row => ({
+      id: row.id,
+      jenis: row.jenis,
+      diameter: row.diameter,
+      kedalaman: row.kedalaman,
+      geom: JSON.parse(row.geom_json)
+    }));
+    
+    res.json(pipes);
+  } catch (error) {
+    console.error('Error fetching pipes:', error);
+    res.status(500).json({ error: 'Failed to fetch pipes' });
+  }
+});
+
+// Get all buildings with polygon geometry
+app.get('/api/buildings', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT 
+        id, 
+        kodepelanggan, 
+        ST_AsGeoJSON(geom) as geom_json 
+      FROM bangunanpelanggan
+    `);
+    
+    // Transform the data to include GeoJSON
+    const buildings = rows.map(row => ({
+      id: row.id,
+      kodepelanggan: row.kodepelanggan,
+      geom: JSON.parse(row.geom_json)
+    }));
+    
+    res.json(buildings);
+  } catch (error) {
+    console.error('Error fetching buildings:', error);
+    res.status(500).json({ error: 'Failed to fetch buildings' });
+  }
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
