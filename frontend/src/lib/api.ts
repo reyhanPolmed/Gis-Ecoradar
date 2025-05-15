@@ -13,6 +13,7 @@ export type TrashBin = {
   kondisi: string
   pengelola: string
   alamat: string
+  kelurahan: string
   kecamatan: string
   tanggal_pemeliharaan_terakhir: string
   foto_url?: string

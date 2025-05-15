@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 // import Image from "next/image"
+import volunterbersih from "./assets/volunterbersih.jpg"
 import Navbar from "@/components/navbar";
 import { Leaf, Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -309,39 +310,39 @@ export default function AboutPage() {
   const teamMembers = [
     {
       name: "Adrian Lase",
-      role: "Founder & CEO",
+      role: "Database & researcher",
       imageSrc:
         "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746518391/foto_adrian_ixcwto.jpg",
     },
     {
       name: "Alex sandro Sidabukke",
-      role: "Environmental Scientist",
+      role: "Database & researcher",
       imageSrc:
         "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746432801/foto_alex_zw0m3x.jpg",
     },
     {
       name: "Heikel Timanta G.S",
-      role: "Lead Developer",
+      role: "Database, researcher, design",
       imageSrc: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746433229/foto_heikel_wgkqax.jpg",
     },
     {
       name: "Jon Evansius Situmorang",
-      role: "Community Manager",
-      imageSrc: "/placeholder.svg?height=400&width=300",
+      role: "Database & researcher",
+      imageSrc: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746675706/foto_jon_s7ccd4.jpg",
     },
     {
       name: "Margaretha Crhisty Silitonga",
-      role: "Community Manager",
+      role: "Database & researcher",
       imageSrc: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746433296/foto_emce_s92hqr.jpg",
     },
     {
       name: "Rika Aliefia",
-      role: "Community Manager",
+      role: "Database & researcher",
       imageSrc: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746518391/foto_rika_ckl1xb.jpg",
     },
     {
       name: "Reyhan Yonathan Batubara",
-      role: "Community Manager",
+      role: "Proggrammer",
       imageSrc: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1746433683/foto_reyhan_2_rebulw.jpg",
     },
   ];
@@ -354,10 +355,10 @@ export default function AboutPage() {
       <section className="relative py-20 overflow-hidden flex justify-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
-          <div className="w-[1920] h-[600px]"></div>
+          {/* <div className="w-[1920] h-[600px]"></div> */}
         </div>
 
-        <div className="container relative z-10 px-4">
+        <div className="container relative z-10 px-4 h-[200px]">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -446,7 +447,14 @@ export default function AboutPage() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.5 }}
               >
-                <div className="w-[600px] h-[500px]"></div>
+                {/* <div className="w-[600px] h-[500px]"></div> */}
+                            <div style={{ height: "500px", width: "600px", overflow: "hidden" }}>
+                            <img
+                              src={volunterbersih}
+                              alt="Example"
+                              style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                            />
+                          </div>
               </motion.div>
             </div>
           </div>
@@ -653,7 +661,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-lg font-bold mb-2">Alamat</h3>
                 <p className="text-muted-foreground">
-                  Jl. Lingkungan Hijau No. 123, Jakarta
+                  Jl. Almamater No. 1, Medan
                 </p>
               </div>
             </AnimatedText>
@@ -674,7 +682,7 @@ export default function AboutPage() {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">Telepon</h3>
-                <p className="text-muted-foreground">+62 21 1234 5678</p>
+                <p className="text-muted-foreground">+62823 8327 2872</p>
               </div>
             </AnimatedText>
           </div>

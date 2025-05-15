@@ -3,7 +3,8 @@ import { motion, useAnimation, useInView } from "framer-motion"
 import { Link } from "react-router-dom"
 import { ArrowRight, Leaf, Trash2, Droplet, CloudRain, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import bumihijau from "./assets/bumihijau.jpg"
+import botolsampah from "./assets/botolsampah.jpg"
+import gambargis from "./assets/kartungis.jpg"
 import Navbar from "@/components/navbar"
 
 interface IssueCardProps {
@@ -140,7 +141,14 @@ export default function LandingPage() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
             {/* image */}
-            <div className="w-[1366px] h-[768px] bg-slate-400 bg-cover" style={{ backgroundImage: `url(${bumihijau})`}}></div>
+            <div style={{ height: "680px", width: "1366px", overflow: "hidden" }}>
+            <img
+              src={botolsampah}
+              alt="Example"
+              style={{ height: "100%", width: "100%", objectFit: "cover", filter: "blur(2px) brightness(60%)" }}
+            />
+          </div>
+            {/* <div className="w-[1366px] h-[768px] bg-slate-400 bg-cover" style={{ backgroundImage: `url(${bumihijau})`}}></div> */}
         </div>
 
         <div className="container relative z-10 px-4 text-center">
@@ -365,14 +373,21 @@ export default function LandingPage() {
             </div>
 
             <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-xl">
-                <div className="w-[1920px] h-[1080px] bg-slate-400"></div>
+            <div style={{ height: "500px", width: "600px", overflow: "hidden" }}>
+            <img
+              src={gambargis}
+              alt="Example"
+              style={{ height: "100%", width: "100%", objectFit: "cover" }}
+            />
+          </div>
+                {/* <div className="w-[1920px] h-[1080px] bg-slate-400"></div> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 flex justify-center">
+      {/* <section className="py-20 bg-gray-50 dark:bg-gray-800 flex justify-center">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <AnimatedText delay={0.1}>
@@ -437,10 +452,10 @@ export default function LandingPage() {
             </AnimatedText>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-white dark:bg-gray-900 flex justify-center">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 flex justify-center">
         <div className="container px-4">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedText delay={0.1}>

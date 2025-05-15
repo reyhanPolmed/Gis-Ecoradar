@@ -140,6 +140,7 @@ export default function Map({
             <p style="margin: 0 0 5px;"><strong>Jenis:</strong> ${bin.jenis}</p>
             <p style="margin: 0 0 5px;"><strong>Kondisi:</strong> ${bin.kondisi}</p>
             <p style="margin: 0 0 5px;"><strong>Kapasitas:</strong> ${bin.kapasitas} liter</p>
+            <p style="margin: 0 0 5px;"><strong>Keluarahan:</strong> ${bin.kelurahan}</p>
             <p style="margin: 0 0 5px;"><strong>Kecamatan:</strong> ${bin.kecamatan}</p>
             <p style="margin: 0;"><strong>Pemeliharaan terakhir:</strong> ${formatDate(bin.tanggal_pemeliharaan_terakhir)}</p>
           </div>
@@ -237,6 +238,10 @@ export default function Map({
             <p style="margin: 0 0 5px;"><strong>Kelurahan:</strong> ${area.kelurahan}</p>
             <p style="margin: 0 0 5px;"><strong>Luas Area:</strong> ${area.luas_area_ha} ha</p>
             <p style="margin: 0;"><strong>Kedalaman Rata-rata:</strong> ${area.kedalaman_rata_rata_cm} cm</p>
+            <p style="margin: 0;"><strong>Penyebab utama:</strong> ${area.penyebab_utama}</p>
+            <p style="margin: 0;"><strong>Jumlah Penduduk Terdampak:</strong> ${area.jumlah_penduduk_terdampak}</p>
+            <p style="margin: 0;"><strong>Infrastruktur Terdampak:</strong> ${area.infrastruktur_terdampak}</p>
+            <p style="margin: 0;"><strong>Upaya Mitigasi:</strong> ${area.upaya_mitigasi}</p>
           </div>
         `)
 
