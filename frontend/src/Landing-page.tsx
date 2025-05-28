@@ -14,11 +14,11 @@ interface IssueCardProps {
   delay?: number;
 }
 
-interface StatCounterProps {
-  value: string;
-  label: string;
-  delay?: number;
-}
+// interface StatCounterProps {
+//   value: string;
+//   label: string;
+//   delay?: number;
+// }
 
 interface AnimatedTextProps {
   children: ReactNode;
@@ -55,41 +55,41 @@ const AnimatedText = ({ children, delay = 0, className = "" }: AnimatedTextProps
 }
 
 // Komponen untuk statistik dengan animasi counter
-const StatCounter = ({ value, label, delay = 0 }: StatCounterProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-  const controls = useAnimation()
+// const StatCounter = ({ value, label, delay = 0 }: StatCounterProps) => {
+//   const ref = useRef(null)
+//   const isInView = useInView(ref, { once: true, amount: 0.5 })
+//   const controls = useAnimation()
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible")
-    }
-  }, [isInView, controls])
+//   useEffect(() => {
+//     if (isInView) {
+//       controls.start("visible")
+//     }
+//   }, [isInView, controls])
 
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: { opacity: 1, scale: 1 },
-      }}
-      transition={{ duration: 0.6, delay }}
-      className="flex flex-col items-center"
-    >
-      <motion.span
-        className="text-4xl md:text-5xl font-bold text-primary"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 2 }}
-      >
-        {value}
-      </motion.span>
-      <span className="text-sm md:text-base text-muted-foreground mt-2">{label}</span>
-    </motion.div>
-  )
-}
+//   return (
+//     <motion.div
+//       ref={ref}
+//       initial="hidden"
+//       animate={controls}
+//       variants={{
+//         hidden: { opacity: 0, scale: 0.8 },
+//         visible: { opacity: 1, scale: 1 },
+//       }}
+//       transition={{ duration: 0.6, delay }}
+//       className="flex flex-col items-center"
+//     >
+//       <motion.span
+//         className="text-4xl md:text-5xl font-bold text-primary"
+//         initial={{ opacity: 0 }}
+//         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+//         transition={{ duration: 2 }}
+//       >
+//         {value}
+//       </motion.span>
+//       <span className="text-sm md:text-base text-muted-foreground mt-2">{label}</span>
+//     </motion.div>
+//   )
+// }
 
 // Komponen untuk kartu isu lingkungan
 const IssueCard = ({ icon: Icon, title, description, delay = 0 }:IssueCardProps) => {
@@ -199,7 +199,7 @@ export default function LandingPage() {
       </section>
 
       {/* Intro Section */}
-      <section ref={scrollRef} className="py-20 bg-white dark:bg-gray-900 flex justify-center">
+      <section ref={scrollRef} className="py-20 bg-primary/5 dark:bg-gray-900 flex justify-center">
         <div className="containe px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <AnimatedText delay={0.1}>
@@ -248,7 +248,7 @@ export default function LandingPage() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-primary/5 flex justify-center">
+      {/* <section className="py-20 bg-primary/5 flex justify-center">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <AnimatedText delay={0.1}>
@@ -270,7 +270,7 @@ export default function LandingPage() {
             <StatCounter value="78%" label="Kota di Indonesia rawan banjir" delay={0.8} />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action Section */}
       {/* <section className="py-20 bg-gradient-to-r from-primary/90 to-primary/70 text-white">

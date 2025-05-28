@@ -305,7 +305,7 @@ export default function MapView() {
               className="text-[10px] w-[100px] font-bold"
               onClick={() => setActiveDataType("trashBins")}
             >
-              TPS
+              TPS / TPA
             </Button>
             <Button
               variant={
